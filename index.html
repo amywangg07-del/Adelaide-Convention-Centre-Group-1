@@ -96,12 +96,14 @@ button{font-family:inherit;}
 .upload-wrap{width:100%;max-width:620px;text-align:center;}
 .s3-head{font-size:clamp(26px,3.6vw,38px);color:var(--deep);margin-bottom:14px;}
 .s3-sub{color:var(--muted);font-size:15px;margin-bottom:36px;}
-.dropzone{border:2px dashed var(--green2);border-radius:20px;padding:46px 30px;
-  background:rgba(255,255,255,.5);cursor:pointer;transition:.3s;position:relative;}
-.dropzone:hover{background:rgba(63,156,130,.08);border-color:var(--green);}
-.dropzone .dz-icon{width:46px;height:46px;color:var(--green);margin:0 auto 14px;}
-.dropzone .dz-t{font-weight:700;color:var(--deep);font-size:15.5px;}
+.dropzone{border:2px dashed #aab3ac;border-radius:20px;padding:46px 30px;
+  background:rgba(0,0,0,.025);cursor:pointer;transition:.3s;position:relative;
+  opacity:.62;filter:grayscale(.55);}
+.dropzone:hover{opacity:.85;filter:grayscale(.25);background:rgba(63,156,130,.06);border-color:var(--green2);}
+.dropzone .dz-icon{width:46px;height:46px;color:var(--muted);margin:0 auto 14px;}
+.dropzone .dz-t{font-weight:700;color:var(--ink);font-size:15.5px;}
 .dropzone .dz-s{font-size:13px;color:var(--muted);margin-top:6px;}
+.dz-note{margin-top:14px;font-size:12.5px;color:var(--muted);font-style:italic;}
 .file-chip{display:none;margin:22px auto 0;max-width:280px;background:#fff;border:1px solid var(--line);
   border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:10px;
   box-shadow:0 10px 24px -12px rgba(0,0,0,.2);transition:transform .9s var(--ease),opacity .9s var(--ease);}
@@ -109,14 +111,16 @@ button{font-family:inherit;}
 .file-chip .fc-ic{width:22px;height:22px;color:var(--blue);flex:0 0 22px;}
 .file-chip .fc-t{font-size:13px;font-weight:700;color:var(--ink);text-align:left;}
 .file-chip .fc-s{font-size:11px;color:var(--muted);text-align:left;}
-.adelala-zone{margin-top:46px;display:flex;flex-direction:column;align-items:center;gap:16px;}
+.adelala-zone{margin-top:46px;display:flex;flex-direction:column;align-items:center;gap:10px;}
 .adelala-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--sand),var(--green2));
   display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;
   box-shadow:0 0 0 0 rgba(214,164,90,.4);animation:ringpulse 2.6s ease-in-out infinite;}
 @keyframes ringpulse{0%{box-shadow:0 0 0 0 rgba(214,164,90,.45);}70%{box-shadow:0 0 0 18px rgba(214,164,90,0);}100%{box-shadow:0 0 0 0 rgba(214,164,90,0);}}
+.adelala-name{font-size:12px;font-weight:800;color:var(--deep);letter-spacing:.03em;}
+.adelala-name span{color:var(--muted);font-weight:600;}
 .adelala-bubble{max-width:480px;background:#fff;border-radius:18px;border:1px solid var(--line);
   padding:20px 24px;font-size:15px;line-height:1.65;color:var(--ink);box-shadow:var(--shadow);
-  min-height:30px;text-align:left;display:none;}
+  min-height:30px;text-align:left;display:none;margin-top:6px;}
 .cursor-blink{display:inline-block;width:2px;height:16px;background:var(--green);vertical-align:-2px;
   animation:blink 1s step-end infinite;margin-left:1px;}
 @keyframes blink{50%{opacity:0;}}
@@ -138,8 +142,6 @@ button{font-family:inherit;}
 .hotspot .pulse{position:absolute;inset:-6px;border-radius:50%;border:1.5px solid rgba(214,164,90,.5);
   animation:pulse 2.4s ease-out infinite;}
 @keyframes pulse{0%{transform:scale(.85);opacity:.8;}100%{transform:scale(1.55);opacity:0;}}
-.hs-label{position:absolute;top:68px;font-size:11px;font-weight:800;color:#fdf9ee;white-space:nowrap;
-  letter-spacing:.04em;text-transform:uppercase;opacity:.85;}
 .map-panel{flex:1 1 380px;min-width:300px;background:var(--glass);backdrop-filter:blur(16px);
   border:1px solid var(--glass-brd);border-radius:22px;padding:30px;box-shadow:var(--shadow);
   min-height:420px;display:flex;flex-direction:column;}
@@ -197,7 +199,6 @@ button{font-family:inherit;}
 .dash-sub{margin-top:8px;font-size:13.5px;color:#cfe3dd;max-width:540px;position:relative;line-height:1.55;}
 .dash-body{padding:30px 38px 10px;}
 .dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-@media(max-width:760px){.dash-grid{grid-template-columns:repeat(2,1fr);}}
 .dash-tile{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:18px;
   opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease);}
 .dash-tile.in{opacity:1;transform:translateY(0);}
@@ -230,11 +231,11 @@ button{font-family:inherit;}
   linear-gradient(180deg,#0a1f1c,#0e2b25);color:#fdf9ee;min-height:115vh;}
 .eco-h{font-size:clamp(28px,4vw,46px);text-align:center;max-width:760px;}
 .eco-sub{margin-top:14px;color:#bcdacf;text-align:center;max-width:560px;font-size:15px;line-height:1.6;}
-.eco-canvas{position:relative;width:100%;max-width:760px;height:560px;margin-top:50px;}
+.eco-canvas{position:relative;width:100%;max-width:760px;aspect-ratio:1/1;margin-top:50px;}
 .eco-node{position:absolute;width:78px;height:78px;border-radius:50%;display:flex;align-items:center;
   justify-content:center;text-align:center;font-size:11px;font-weight:800;color:#10241f;cursor:pointer;
   background:var(--sand);box-shadow:0 0 0 0 rgba(214,164,90,.35);transition:transform .3s,box-shadow .3s;
-  opacity:0;transform:scale(.3);}
+  opacity:0;transform:scale(.3);padding:4px;}
 .eco-node.show{opacity:1;transform:scale(1);transition:opacity .7s var(--ease),transform .7s var(--ease);}
 .eco-node:hover{transform:scale(1.1);}
 .eco-node.center{width:108px;height:108px;background:#fff;color:var(--deep);font-size:12.5px;
@@ -275,6 +276,43 @@ button{font-family:inherit;}
 .finale-msg{max-width:640px;font-size:16px;line-height:1.75;color:#cfe3dd;margin-top:10px;}
 .finale-cta{font-size:clamp(24px,3.4vw,38px);margin-top:42px;max-width:760px;line-height:1.3;}
 .restart{margin-top:30px;font-size:13px;color:#9fc4ba;text-decoration:underline;cursor:pointer;}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media(max-width:880px){
+  .navdots{right:14px;gap:10px;}
+  .navdots button{width:7px;height:7px;}
+  .brandmark{font-size:11.5px;top:16px;left:16px;}
+  .scene{padding:100px 6vw 70px;}
+  .map-shell{flex-direction:column;}
+  .map-canvas{width:100%;}
+  .eco-canvas{max-width:520px;}
+  .dash-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){
+  .scene{padding:90px 5.5vw 60px;min-height:auto;padding-top:110px;padding-bottom:70px;}
+  #s1, #s8, #s9{min-height:100vh;}
+  .hero-h{font-size:clamp(32px,9vw,52px);}
+  .hero-s{font-size:15.5px;}
+  .profile-card{padding:26px;}
+  .dropzone{padding:34px 20px;}
+  .adelala-bubble{padding:16px 18px;font-size:14px;}
+  .lunch-stage{height:460px;}
+  .logo-bubble{font-size:11px;padding:9px 13px;}
+  .dash-head,.dash-body,.dash-foot{padding-left:22px;padding-right:22px;}
+  .dash-title{font-size:22px;}
+  .dash-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .li-card{max-width:100%;}
+  .eco-h{font-size:clamp(24px,7vw,34px);}
+  .eco-node{width:58px;height:58px;font-size:9px;}
+  .eco-node.center{width:84px;height:84px;font-size:10px;}
+  .eco-panel{width:86vw;}
+  .navdots{display:none;}
+}
+@media(max-width:400px){
+  .dash-grid{grid-template-columns:1fr 1fr;}
+  .eco-node{width:50px;height:50px;font-size:8.5px;}
+  .eco-node.center{width:74px;height:74px;font-size:9.5px;}
+}
 </style>
 </head>
 <body>
@@ -332,12 +370,14 @@ button{font-family:inherit;}
       <div class="dz-t">Drop your Company Profile PDF here</div>
       <div class="dz-s">or click to simulate upload — try "Detmold Group"</div>
     </div>
+    <div class="dz-note">This is a concept prototype only — please don't upload real company files. The upload above is simulated for demo purposes.</div>
     <div class="file-chip" id="fileChip">
       <svg class="fc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2h9l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2Z"/><path d="M14 2v6h6"/></svg>
       <div><div class="fc-t">Detmold_Group_Profile.pdf</div><div class="fc-s">2.4 MB · Uploaded</div></div>
     </div>
     <div class="adelala-zone">
       <div class="adelala-avatar">AI</div>
+      <div class="adelala-name">Adelala <span>· ACC's AI robot assistant</span></div>
       <div class="adelala-bubble" id="adelalaBubble"></div>
     </div>
     <div class="s3-continue" id="s3Continue"><button class="btn btn-primary" data-go="s4">Continue the Journey →</button></div>
@@ -353,22 +393,16 @@ button{font-family:inherit;}
     <div class="map-canvas" id="mapCanvas">
       <div class="hotspot" style="top:14%;left:12%;" data-spot="kitchen"><span class="pulse"></span>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19h16M6 19V9a6 6 0 0112 0v10M9 9V6M12 9V5M15 9V6"/></svg></div>
-      <div class="hs-label" style="top:68px;left:4%;">Kitchen</div>
       <div class="hotspot" style="top:14%;left:72%;" data-spot="waste"><span class="pulse"></span>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></div>
-      <div class="hs-label" style="top:68px;left:62%;">Waste Hub</div>
       <div class="hotspot" style="top:48%;left:42%;" data-spot="water"><span class="pulse"></span>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3s7 8 7 13a7 7 0 01-14 0c0-5 7-13 7-13Z"/></svg></div>
-      <div class="hs-label" style="top:102%;left:34%;">Water</div>
       <div class="hotspot" style="top:48%;left:78%;" data-spot="energy"><span class="pulse"></span>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
-      <div class="hs-label" style="top:102%;left:70%;">Energy</div>
       <div class="hotspot" style="top:78%;left:18%;" data-spot="community"><span class="pulse"></span>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5M14.5 15c2.6.2 4.5 1.8 4.5 5"/></svg></div>
-      <div class="hs-label" style="top:132%;left:8%;">Community</div>
       <div class="hotspot" style="top:78%;left:60%;" data-spot="culture"><span class="pulse"></span>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 000 18M3 12h18"/></svg></div>
-      <div class="hs-label" style="top:132%;left:52%;">Culture</div>
     </div>
     <div class="map-panel empty" id="mapPanel">
       <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
@@ -405,7 +439,7 @@ button{font-family:inherit;}
 <section class="scene" id="s6">
   <div class="notif rv" id="notif">
     <div class="na">AI</div>
-    <div><div class="nt">Your Sustainability Summary is Ready</div><div class="ns">Prepared by Adelala for Zoe</div></div>
+    <div><div class="nt">Your Sustainability Summary is Ready</div><div class="ns">Prepared by Adelala, ACC's AI robot, for Zoe</div></div>
   </div>
   <div class="dash-card rv d1">
     <div class="dash-head">
@@ -609,7 +643,7 @@ new IntersectionObserver(entries=>{
   });
 },{threshold:.4}).observe(s7);
 
-/* ---------------- SCENE 8: ecosystem network ---------------- */
+/* ---------------- SCENE 8: ecosystem network (responsive) ---------------- */
 const ecoData = [
   {id:'acc',name:'Adelaide Convention Centre',center:true,tag:'The Host',overview:'Fifteen years of sustainability leadership.',contribution:'Provides the platform where every partnership and event comes together.',why:'Every connection in this network passes through ACC — the constant thread across fifteen years of progress.'},
   {id:'detmold',name:'Detmold Group',tag:'Sustainable Packaging',overview:'Sustainable paper packaging.',contribution:'Supports responsible sourcing and circular materials.',why:'Packaging choices ripple across every event — Detmold keeps that footprint circular.'},
@@ -620,39 +654,54 @@ const ecoData = [
 ];
 const canvas = document.getElementById('ecoCanvas');
 const linesSvg = document.getElementById('ecoLines');
-const R = 220, CX = 380, CY = 280;
-const positions = {};
-ecoData.forEach((c,i)=>{
-  if(c.center){ positions[c.id] = {x:CX,y:CY}; return; }
-  const others = ecoData.filter(x=>!x.center);
-  const idx = others.findIndex(o=>o.id===c.id);
-  const angle = (idx / others.length) * Math.PI*2 - Math.PI/2;
-  positions[c.id] = { x: CX + R*Math.cos(angle), y: CY + R*Math.sin(angle) };
-});
-ecoData.forEach(c=>{
-  const node = document.createElement('div');
-  node.className = 'eco-node' + (c.center?' center':'');
-  node.style.left = (positions[c.id].x - (c.center?54:39)) + 'px';
-  node.style.top = (positions[c.id].y - (c.center?54:39)) + 'px';
-  node.textContent = c.center ? c.name.split(' ').slice(0,2).join(' ') : c.name;
-  node.dataset.id = c.id;
-  canvas.appendChild(node);
-  if(!c.center){
-    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
-    line.setAttribute('x1', positions.acc.x); line.setAttribute('y1', positions.acc.y);
-    line.setAttribute('x2', positions[c.id].x); line.setAttribute('y2', positions[c.id].y);
-    line.dataset.id = c.id;
-    linesSvg.appendChild(line);
-  }
-});
+const others = ecoData.filter(x=>!x.center);
+let nodeEls = [];
+let ecoRevealed = false;
+
+function layoutEco(){
+  const rect = canvas.getBoundingClientRect();
+  const CX = rect.width/2, CY = rect.height/2;
+  const R = Math.min(rect.width, rect.height) * 0.36;
+  nodeEls.forEach(n=>n.remove()); nodeEls=[];
+  linesSvg.innerHTML='';
+  const positions = {};
+  ecoData.forEach(c=>{
+    if(c.center){ positions[c.id] = {x:CX,y:CY}; return; }
+    const idx = others.findIndex(o=>o.id===c.id);
+    const angle = (idx/others.length)*Math.PI*2 - Math.PI/2;
+    positions[c.id] = { x: CX + R*Math.cos(angle), y: CY + R*Math.sin(angle) };
+  });
+  ecoData.forEach(c=>{
+    const node = document.createElement('div');
+    node.className = 'eco-node' + (c.center?' center':'') + (ecoRevealed?' show':'');
+    node.textContent = c.center ? c.name.split(' ').slice(0,2).join(' ') : c.name;
+    node.dataset.id = c.id;
+    canvas.appendChild(node);
+    const half = node.offsetWidth/2;
+    node.style.left = (positions[c.id].x - half) + 'px';
+    node.style.top = (positions[c.id].y - half) + 'px';
+    nodeEls.push(node);
+    if(!c.center){
+      const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('x1', positions.acc.x); line.setAttribute('y1', positions.acc.y);
+      line.setAttribute('x2', positions[c.id].x); line.setAttribute('y2', positions[c.id].y);
+      line.dataset.id = c.id;
+      if(ecoRevealed) line.classList.add('show');
+      linesSvg.appendChild(line);
+    }
+  });
+}
+layoutEco();
+let resizeT;
+window.addEventListener('resize', ()=>{ clearTimeout(resizeT); resizeT = setTimeout(layoutEco, 180); });
+
 const s8 = document.getElementById('s8');
 let ecoDone=false;
 new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting && !ecoDone){
-      ecoDone=true;
-      const nodes = document.querySelectorAll('.eco-node');
-      nodes.forEach((n,i)=> setTimeout(()=>n.classList.add('show'), i*220));
+      ecoDone=true; ecoRevealed=true;
+      nodeEls.forEach((n,i)=> setTimeout(()=>n.classList.add('show'), i*220));
       document.querySelectorAll('.eco-lines line').forEach((l,i)=> setTimeout(()=>l.classList.add('show'), 300 + i*220));
     }
   });
